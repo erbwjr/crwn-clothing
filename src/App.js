@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, redirect, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import './App.css';
 import HomePage from './pages/homepage/homepage.component';
@@ -30,7 +30,7 @@ class App extends React.Component {
         });
 
       } else {
-        setCurrentUser({ userAuth })
+        setCurrentUser(userAuth)
       }
     })
   }
@@ -57,11 +57,12 @@ class App extends React.Component {
   }
 
 }
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-})
 
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
-})
+});
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
 export default connect(mapStateToProps, mapDispatchToProps)(App);
